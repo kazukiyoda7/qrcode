@@ -1,5 +1,13 @@
 import qrcode
 import numpy as np
+import os
+
+# 'data'ディレクトリのパス
+data_dir = "data"
+# ディレクトリが存在しない場合は作成
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
+    print(f"{data_dir}ディレクトリを作成しました。")
 
 qr = qrcode.QRCode(
     version=1,
