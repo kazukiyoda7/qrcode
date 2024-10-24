@@ -13,7 +13,7 @@ if not os.path.exists(data_dir):
 qr = qrcode.QRCode(
     version=1,
     error_correction=qrcode.constants.ERROR_CORRECT_L,
-    box_size=10,
+    box_size=1,
     border=1,
     mask_pattern=0,
 )
@@ -24,9 +24,10 @@ for i in range(100):
     contents = i
     qr.add_data(contents)
     qr.make(fit=True)
-    path = 'data/' + str(i) + '.png'
+    path = str(i) + '.png'
     img = qr.make_image(fill_color="black", back_color="white").convert('L')
-    img.save(path)
-    df = df.append({"path": path, "contents": contents}, ignore_index=True)
-    df.to_csv("data/qr_data.csv", index=False)
+    img.save('data/' + path)
+    data = pd.DataFrame([{"path": path, "contents": contents}])
+    df = pd.concat([df, data], ignore_index=True)
+    df.to_csv("qr_data.csv", index=False)
     qr.clear()

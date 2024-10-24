@@ -12,7 +12,7 @@ if not os.path.exists(data_dir):
 qr = qrcode.QRCode(
     version=1,
     error_correction=qrcode.constants.ERROR_CORRECT_L,
-    box_size=10,
+    box_size=1,
     border=1,
     mask_pattern=0
 )
