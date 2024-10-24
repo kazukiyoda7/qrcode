@@ -1,7 +1,6 @@
 import qrcode
 import numpy as np
 import os
-import random
 import pandas as pd
 
 # ディレクトリが存在しない場合は作成
