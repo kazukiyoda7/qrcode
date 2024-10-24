@@ -5,7 +5,7 @@ import random
 import pandas as pd
 
 # ディレクトリが存在しない場合は作成
-data_dir = "data"
+data_dir = "data_binary"
 if not os.path.exists(data_dir):
     os.makedirs(data_dir)
     print(f"created {data_dir} directory.")
@@ -24,10 +24,10 @@ for i in range(100):
     contents = i
     qr.add_data(contents)
     qr.make(fit=True)
-    path = str(i) + '.png'
-    img = qr.make_image(fill_color="black", back_color="white").convert('L')
-    img.save('data/' + path)
+    data_binary = np.array(qr.modules).astype(int).flatten()
+    path = str(i) + '.npy'
+    np.save('data_binary/' + path, data_binary)
     data = pd.DataFrame([{"path": path, "contents": contents}])
     df = pd.concat([df, data], ignore_index=True)
-    df.to_csv("qr_data.csv", index=False)
+    df.to_csv("qr_binary_data.csv", index=False)
     qr.clear()

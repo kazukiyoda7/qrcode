@@ -1,4 +1,7 @@
 /data
+/data_binary
 /__pycache__
-qr_data.csv
+qr_image_data.csv
+qr_binary_data.csv
 .bash_history
+.cache

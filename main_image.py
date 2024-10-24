@@ -3,7 +3,7 @@ import torch
 from torch import nn, optim
 from torchvision.utils import save_image
 from torchvision import transforms
-from dataset import QRCodeDataset
+from dataset import QRCodeImageDataset
 from transformers import ViTForImageClassification, ViTFeatureExtractor
 
 
@@ -15,7 +15,7 @@ transform = transforms.Compose(
     ]
 )
 
-dataset = QRCodeDataset("qr_data.csv", "data", transform=transform)
+dataset = QRCodeImageDataset("qr_data.csv", "data", transform=transform)
 dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
 
 
